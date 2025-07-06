@@ -60,7 +60,7 @@ jobs:
           if [ -d ".git" ]; then
             git pull origin main
           else
-            git clone https://github.com/${{ github.repository }} .
+            git clone git@github.com:${{ github.repository }} .
           fi
           
           # Stop existing container if running
