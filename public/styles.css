@@ -2,6 +2,61 @@
    ULTIMATE BIRTHDAY WEBSITE STYLES
    ====================================== */
 
+/* Performance Optimizations */
+* {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+/* GPU Acceleration for smooth animations */
+.star, .floating-shape, .confetti, .firework, 
+.balloon-3d, .candle-flame, .particle,
+.cosmic-particle, .wish-portal {
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Optimize rendering for better performance */
+.magical-bg, .stars-container, .floating-shapes,
+.confetti-container, .fireworks-container,
+.balloons-container, .cosmic-particles-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    contain: layout style paint;
+}
+
+/* Additional Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Optimize for 60fps animations */
+.confetti, .firework, .balloon-3d, .star, .floating-shape {
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+/* Container optimizations */
+.confetti-container, .fireworks-container, .balloons-container {
+    contain: layout style paint;
+    will-change: contents;
+}
+
+/* Smooth scrolling performance */
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 /* CSS Variables for Dynamic Theming */
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -84,7 +139,7 @@ body {
     height: 100%;
 }
 
-.floating-shape {
+.floating-shhape {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
@@ -143,11 +198,11 @@ body {
 
 @keyframes confetti-fall {
     0% {
-        transform: translateY(-100vh) rotate(0deg);
+        transform: translate3d(0, -100vh, 0) rotate(0deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translate3d(0, 100vh, 0) rotate(360deg);
         opacity: 0;
     }
 }
@@ -162,11 +217,11 @@ body {
 
 @keyframes firework-explosion {
     0% {
-        transform: scale(0);
+        transform: translate3d(var(--end-x, 0), var(--end-y, 0), 0) scale(0);
         opacity: 1;
     }
     100% {
-        transform: scale(20);
+        transform: translate3d(var(--end-x, 0), var(--end-y, 0), 0) scale(1);
         opacity: 0;
     }
 }
@@ -924,8 +979,8 @@ body {
 }
 
 @keyframes balloon-float-3d {
-    0%, 100% { transform: translateY(0px) rotate(-2deg); }
-    50% { transform: translateY(-30px) rotate(2deg); }
+    0%, 100% { transform: translate3d(0, 0, 0) rotateY(-2deg); }
+    50% { transform: translate3d(0, -20px, 0) rotateY(2deg); }
 }
 
 @keyframes shine-3d {

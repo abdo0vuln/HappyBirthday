@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let level = 1;
     let musicPlaying = false;
     let currentTheme = 'cosmic';
+    
+    // Performance optimization - detect device capabilities
+    const isHighPerformanceDevice = () => {
+        return navigator.hardwareConcurrency >= 4 && 
+               window.devicePixelRatio <= 2 &&
+               !navigator.userAgent.includes('Mobile');
+    };
+    
+    const performanceMode = isHighPerformanceDevice() ? 'high' : 'balanced';
+    
     let gameState = {
         powerUps: {
             multiply: false,
@@ -34,82 +44,100 @@ document.addEventListener('DOMContentLoaded', function() {
         setupGameModal();
     }
     
-    // Create magical starfield background
+    // Create optimized magical starfield background
     function createMagicalBackground() {
         const starsContainer = document.getElementById('stars-container');
         const floatingShapes = document.querySelector('.floating-shapes');
         
-        // Create twinkling stars
-        for (let i = 0; i < 100; i++) {
+        // Reduce stars for better performance - quality over quantity
+        for (let i = 0; i < 50; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
             star.style.animationDelay = Math.random() * 2 + 's';
             star.style.animationDuration = (Math.random() * 3 + 1) + 's';
+            star.style.willChange = 'opacity'; // GPU optimization
             starsContainer.appendChild(star);
         }
         
-        // Create floating shapes
-        setInterval(() => {
-            const shape = document.createElement('div');
-            shape.className = 'floating-shape';
-            shape.style.left = Math.random() * 100 + '%';
-            shape.style.width = shape.style.height = (Math.random() * 30 + 10) + 'px';
-            shape.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            floatingShapes.appendChild(shape);
-            
-            setTimeout(() => {
-                if (shape.parentNode) {
-                    shape.parentNode.removeChild(shape);
-                }
-            }, 25000);
-        }, 3000);
-    }
-    
-    // Advanced confetti system
-    function createAdvancedConfetti() {
-        const confettiContainer = document.getElementById('confetti-container');
+        // Optimized floating shapes with controlled frequency
+        let shapeCount = 0;
+        const maxShapes = 3;
         
         setInterval(() => {
-            for (let i = 0; i < 8; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                confetti.style.animationDuration = (Math.random() * 4 + 3) + 's';
-                
-                // Random colors and shapes
-                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8', '#6c5ce7'];
-                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                confettiContainer.appendChild(confetti);
+            if (shapeCount < maxShapes) {
+                const shape = document.createElement('div');
+                shape.className = 'floating-shape';
+                shape.style.left = Math.random() * 100 + '%';
+                shape.style.width = shape.style.height = (Math.random() * 30 + 10) + 'px';
+                shape.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                shape.style.willChange = 'transform'; // GPU optimization
+                floatingShapes.appendChild(shape);
+                shapeCount++;
                 
                 setTimeout(() => {
-                    if (confetti.parentNode) {
-                        confetti.parentNode.removeChild(confetti);
+                    if (shape.parentNode) {
+                        shape.parentNode.removeChild(shape);
+                        shapeCount--;
                     }
-                }, 7000);
+                }, 25000);
             }
-        }, 400);
+        }, 5000); // Increased interval for better performance
     }
     
-    // Create spectacular fireworks
+    // Optimized confetti system with performance controls
+    function createAdvancedConfetti() {
+        const confettiContainer = document.getElementById('confetti-container');
+        let confettiCount = 0;
+        const maxConfetti = 15; // Limit active confetti
+        
+        setInterval(() => {
+            if (confettiCount < maxConfetti) {
+                for (let i = 0; i < 3; i++) { // Reduced from 8 to 3
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    confetti.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                    confetti.style.willChange = 'transform'; // GPU optimization
+                    
+                    // Random colors and shapes
+                    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8', '#6c5ce7'];
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    confettiContainer.appendChild(confetti);
+                    confettiCount++;
+                    
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
+                            confettiCount--;
+                        }
+                    }, 7000);
+                }
+            }
+        }, 800); // Increased interval for smoother performance
+    }
+    
+    // Create optimized spectacular fireworks
     function createFireworks(x = null, y = null) {
         const fireworksContainer = document.getElementById('fireworks-container');
         const centerX = x || Math.random() * window.innerWidth;
         const centerY = y || Math.random() * window.innerHeight * 0.5;
         
-        for (let i = 0; i < 20; i++) {
+        // Reduced particles for better performance while maintaining spectacle
+        for (let i = 0; i < 12; i++) {
             const firework = document.createElement('div');
             firework.className = 'firework';
             firework.style.left = centerX + 'px';
             firework.style.top = centerY + 'px';
+            firework.style.willChange = 'transform'; // GPU optimization
             
             const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#fd79a8', '#6c5ce7'];
             firework.style.background = colors[Math.floor(Math.random() * colors.length)];
             
-            const angle = (i / 20) * Math.PI * 2;
+            const angle = (i / 12) * Math.PI * 2;
             const distance = Math.random() * 100 + 50;
             
             firework.style.setProperty('--end-x', Math.cos(angle) * distance + 'px');
@@ -125,19 +153,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Create premium 3D balloons
+    // Create optimized premium 3D balloons
     function create3DBalloons() {
         const balloonsContainer = document.getElementById('balloons-container');
         const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'pink', 'orange', 'cyan'];
         
         balloonsContainer.innerHTML = '';
         
-        const balloonCount = Math.min(12 + level * 2, 20);
+        // Optimized balloon count for performance
+        const balloonCount = Math.min(8 + level * 1, 12);
         
         for (let i = 0; i < balloonCount; i++) {
             const balloon = document.createElement('div');
             balloon.className = `balloon-3d ${colors[Math.floor(Math.random() * colors.length)]}`;
             balloon.addEventListener('click', popPremiumBalloon);
+            balloon.style.willChange = 'transform'; // GPU optimization
             
             // Add random animation delay
             balloon.style.animationDelay = Math.random() * 2 + 's';
@@ -229,35 +259,40 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.body.appendChild(pointsDisplay);
         
-        // Multiple explosion particles
-        for (let i = 0; i < 15; i++) {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.left = rect.left + rect.width / 2 + 'px';
-            particle.style.top = rect.top + rect.height / 2 + 'px';
-            particle.style.width = '6px';
-            particle.style.height = '6px';
-            particle.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '1001';
-            
-            const angle = (i / 15) * Math.PI * 2;
-            const distance = Math.random() * 100 + 50;
-            const endX = Math.cos(angle) * distance;
-            const endY = Math.sin(angle) * distance;
-            
-            particle.style.animation = `particle-explode 1s ease-out forwards`;
-            particle.style.setProperty('--end-x', endX + 'px');
-            particle.style.setProperty('--end-y', endY + 'px');
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                if (particle.parentNode) {
-                    particle.parentNode.removeChild(particle);
-                }
-            }, 1000);
+        // Optimized explosion particles with performance control
+        const particleCount = performanceMode === 'high' ? 15 : 8;
+        
+        for (let i = 0; i < particleCount; i++) {
+            throttledAnimation(() => {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = rect.left + rect.width / 2 + 'px';
+                particle.style.top = rect.top + rect.height / 2 + 'px';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1001';
+                particle.style.willChange = 'transform';
+                
+                const angle = (i / particleCount) * Math.PI * 2;
+                const distance = Math.random() * 100 + 50;
+                const endX = Math.cos(angle) * distance;
+                const endY = Math.sin(angle) * distance;
+                
+                particle.style.animation = `particle-explode 1s ease-out forwards`;
+                particle.style.setProperty('--end-x', endX + 'px');
+                particle.style.setProperty('--end-y', endY + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 1000);
+            });
         }
         
         setTimeout(() => {
@@ -811,3 +846,30 @@ premiumStyle.textContent = `
     }
 `;
 document.head.appendChild(premiumStyle);
+
+// Performance-optimized animation system
+const animationQueue = [];
+let isAnimating = false;
+
+function throttledAnimation(callback) {
+    animationQueue.push(callback);
+    if (!isAnimating) {
+        isAnimating = true;
+        requestAnimationFrame(processAnimationQueue);
+    }
+}
+
+function processAnimationQueue() {
+    const startTime = performance.now();
+    
+    while (animationQueue.length > 0 && performance.now() - startTime < 16) {
+        const callback = animationQueue.shift();
+        callback();
+    }
+    
+    if (animationQueue.length > 0) {
+        requestAnimationFrame(processAnimationQueue);
+    } else {
+        isAnimating = false;
+    }
+}
