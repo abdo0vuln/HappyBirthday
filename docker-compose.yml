@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  birthday-website:
+    build: .
+    container_name: birthday-fun-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    volumes:
+      - ./public:/app/public:ro
+    networks:
+      - birthday-network
+
+networks:
+  birthday-network:
+    driver: bridge
+
+volumes:
+  birthday-data:
+    driver: local

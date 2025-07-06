@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Ultimate Birthday Celebration! 🎂</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Magical Background Elements -->
+    <div class="magical-bg">
+        <div class="stars-container" id="stars-container"></div>
+        <div class="floating-shapes"></div>
+        <div class="aurora-bg"></div>
+    </div>
+    
+    <!-- Advanced Confetti System -->
+    <div class="confetti-container" id="confetti-container"></div>
+    <div class="fireworks-container" id="fireworks-container"></div>
+    
+    <!-- Birthday Header with 3D Effect -->
+    <header class="birthday-header">
+        <div class="header-content">
+            <h1 class="birthday-title-3d">
+                <span class="letter" data-letter="H">H</span>
+                <span class="letter" data-letter="A">A</span>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="P">P</span>
+                <span class="letter" data-letter="Y">Y</span>
+                <span class="space"></span>
+                <span class="letter birthday-emoji">🎉</span>
+                <span class="space"></span>
+                <span class="letter" data-letter="B">B</span>
+                <span class="letter" data-letter="I">I</span>
+                <span class="letter" data-letter="R">R</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="H">H</span>
+                <span class="letter" data-letter="D">D</span>
+                <span class="letter" data-letter="A">A</span>
+                <span class="letter" data-letter="Y">Y</span>
+                <span class="space"></span>
+                <span class="letter birthday-emoji">🎂</span>
+            </h1>
+            <p class="birthday-subtitle-animated">
+                <i class="fas fa-magic"></i>
+                <span class="typing-text">Welcome to the most magical birthday experience ever!</span>
+                <i class="fas fa-sparkles"></i>
+            </p>
+            <div class="header-decorations">
+                <div class="floating-balloon left"></div>
+                <div class="floating-balloon right"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content with Glass Morphism -->
+    <main class="main-content">
+        <!-- Ultimate Birthday Cake Section -->
+        <section class="cake-section-premium">
+            <div class="section-header">
+                <h2 class="section-title">🎂 Magical Birthday Cake 🎂</h2>
+                <p class="section-subtitle">Make a wish and watch the magic happen!</p>
+            </div>
+            
+            <div class="cake-container-3d">
+                <div class="cake-platform">
+                    <div class="cake-spotlight"></div>
+                    <div class="cake-premium" id="birthday-cake">
+                        <!-- Multi-layer cake with decorations -->
+                        <div class="cake-layer cake-bottom">
+                            <div class="cake-decoration bottom-decoration"></div>
+                            <div class="frosting-drip"></div>
+                        </div>
+                        <div class="cake-layer cake-middle">
+                            <div class="cake-decoration middle-decoration"></div>
+                            <div class="frosting-swirl"></div>
+                        </div>
+                        <div class="cake-layer cake-top">
+                            <div class="cake-decoration top-decoration"></div>
+                            <div class="birthday-message">Happy Birthday!</div>
+                        </div>
+                        
+                        <!-- Premium Candles with 3D Effect -->
+                        <div class="candles-premium">
+                            <div class="candle-3d" data-candle="1">
+                                <div class="candle-body"></div>
+                                <div class="candle-wax"></div>
+                                <div class="flame-3d"><div class="flame-core"></div></div>
+                            </div>
+                            <div class="candle-3d" data-candle="2">
+                                <div class="candle-body"></div>
+                                <div class="candle-wax"></div>
+                                <div class="flame-3d"><div class="flame-core"></div></div>
+                            </div>
+                            <div class="candle-3d" data-candle="3">
+                                <div class="candle-body"></div>
+                                <div class="candle-wax"></div>
+                                <div class="flame-3d"><div class="flame-core"></div></div>
+                            </div>
+                            <div class="candle-3d" data-candle="4">
+                                <div class="candle-body"></div>
+                                <div class="candle-wax"></div>
+                                <div class="flame-3d"><div class="flame-core"></div></div>
+                            </div>
+                            <div class="candle-3d" data-candle="5">
+                                <div class="candle-body"></div>
+                                <div class="candle-wax"></div>
+                                <div class="flame-3d"><div class="flame-core"></div></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Magical Particles Around Cake -->
+                        <div class="magic-particles" id="cake-particles"></div>
+                    </div>
+                </div>
+                
+                <div class="cake-controls">
+                    <button class="blow-candles-btn-premium" id="blow-candles">
+                        <i class="fas fa-wind"></i>
+                        <span>Blow the Candles</span>
+                        <div class="btn-particles"></div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spectacular Balloon Game -->
+        <section class="balloons-section-premium">
+            <div class="section-header">
+                <h2 class="section-title">🎈 Balloon Popping Extravaganza 🎈</h2>
+                <p class="section-subtitle">Pop balloons for magical rewards!</p>
+            </div>
+            
+            <div class="balloons-game-area">
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>Score: <span id="score" class="score-number">0</span></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-fire"></i>
+                        <span>Streak: <span id="streak" class="streak-number">0</span></span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Level: <span id="level" class="level-number">1</span></span>
+                    </div>
+                </div>
+                
+                <div class="balloons-container-3d" id="balloons-container">
+                    <!-- Advanced balloons will be generated by JavaScript -->
+                </div>
+                
+                <div class="power-ups" id="power-ups">
+                    <button class="power-up-btn" data-power="multiply">
+                        <i class="fas fa-times"></i>
+                        <span>2x Points</span>
+                    </button>
+                    <button class="power-up-btn" data-power="rainbow">
+                        <i class="fas fa-rainbow"></i>
+                        <span>Rainbow Mode</span>
+                    </button>
+                    <button class="power-up-btn" data-power="freeze">
+                        <i class="fas fa-snowflake"></i>
+                        <span>Freeze Time</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Birthday Wishes -->
+        <section class="wishes-section-premium">
+            <div class="section-header">
+                <h2 class="section-title">✨ Magical Wish Portal ✨</h2>
+                <p class="section-subtitle">Send your wishes through our magical portal!</p>
+            </div>
+            
+            <div class="wish-portal">
+                <div class="portal-ring"></div>
+                <div class="portal-center">
+                    <div class="wish-form-container-premium">
+                        <div class="wish-input-wrapper">
+                            <textarea 
+                                id="wish-input" 
+                                placeholder="Write your magical birthday wish here... ✨"
+                                rows="4"
+                                maxlength="500"
+                            ></textarea>
+                            <div class="char-counter">
+                                <span id="char-count">0</span>/500
+                            </div>
+                        </div>
+                        <button id="send-wish" class="wish-btn-premium">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Wish to the Stars</span>
+                            <div class="btn-magic-effect"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="wish-response" class="wish-response-premium"></div>
+        </section>
+
+        <!-- Interactive Fun Universe -->
+        <section class="fun-facts-premium">
+            <div class="section-header">
+                <h2 class="section-title">🌟 Birthday Universe Explorer 🌟</h2>
+                <p class="section-subtitle">Discover amazing birthday secrets from around the universe!</p>
+            </div>
+            
+            <div class="universe-container">
+                <div class="fact-planet" onclick="showRandomFact()">
+                    <div class="planet-surface">
+                        <div class="planet-glow"></div>
+                        <div class="planet-rings"></div>
+                        <h3>🪐 Click to Explore!</h3>
+                        <p id="random-fact">🚀 Embark on a cosmic birthday journey!</p>
+                    </div>
+                </div>
+                <div class="cosmic-particles"></div>
+            </div>
+        </section>
+
+        <!-- Advanced Music & Sound Studio -->
+        <section class="music-section-premium">
+            <div class="section-header">
+                <h2 class="section-title">🎵 Celestial Music Studio 🎵</h2>
+                <p class="section-subtitle">Create the perfect birthday symphony!</p>
+            </div>
+            
+            <div class="music-studio">
+                <div class="equalizer" id="equalizer">
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                    <div class="eq-bar"></div>
+                </div>
+                
+                <div class="music-controls-premium">
+                    <button id="play-music" class="music-btn-premium play-btn">
+                        <i class="fas fa-play"></i>
+                        <span>Play Birthday Symphony</span>
+                    </button>
+                    <button id="stop-music" class="music-btn-premium stop-btn">
+                        <i class="fas fa-stop"></i>
+                        <span>Stop Music</span>
+                    </button>
+                    <button id="change-theme" class="music-btn-premium theme-btn">
+                        <i class="fas fa-palette"></i>
+                        <span>Change Theme</span>
+                    </button>
+                </div>
+                
+                <div class="sound-waves" id="sound-waves"></div>
+            </div>
+        </section>
+
+        <!-- Birthday Games Arcade -->
+        <section class="games-section">
+            <div class="section-header">
+                <h2 class="section-title">🎮 Birthday Arcade 🎮</h2>
+                <p class="section-subtitle">Play mini-games for ultimate fun!</p>
+            </div>
+            
+            <div class="arcade-games">
+                <div class="game-card" data-game="memory">
+                    <div class="game-icon">🧠</div>
+                    <h3>Memory Match</h3>
+                    <p>Match birthday-themed cards!</p>
+                    <button class="play-game-btn">Play Now</button>
+                </div>
+                
+                <div class="game-card" data-game="catch">
+                    <div class="game-icon">🎁</div>
+                    <h3>Gift Catcher</h3>
+                    <p>Catch falling birthday gifts!</p>
+                    <button class="play-game-btn">Play Now</button>
+                </div>
+                
+                <div class="game-card" data-game="spin">
+                    <div class="game-icon">🎡</div>
+                    <h3>Birthday Wheel</h3>
+                    <p>Spin for special surprises!</p>
+                    <button class="play-game-btn">Play Now</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Premium Footer -->
+    <footer class="birthday-footer-premium">
+        <div class="footer-content">
+            <div class="footer-decorations">
+                <i class="fas fa-birthday-cake"></i>
+                <i class="fas fa-gift"></i>
+                <i class="fas fa-balloons"></i>
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="footer-main">🎉 Crafted with Cosmic Love & Birthday Magic! 🎂</p>
+            <p class="footer-sub">May your special day be filled with infinite joy, cosmic surprises, and stellar memories! ✨</p>
+            <div class="footer-magic-text">
+                <span class="magic-word">✨ BIRTHDAY </span>
+                <span class="magic-word">🎊 MAGIC </span>
+                <span class="magic-word">🌟 ACTIVATED </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Game Modals -->
+    <div id="game-modal" class="game-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="game-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
