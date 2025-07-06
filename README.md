@@ -193,4 +193,4 @@ Ready to celebrate? Run the project and enjoy the most fun birthday website ever
 - Social media sharing
 - Learning web development
 
-Have fun and happy birthday! 🎂✨.
+Have fun and happy birthday! 🎂✨
